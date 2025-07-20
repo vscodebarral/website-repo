@@ -29,45 +29,27 @@ body {
   height: 60px;
 }
 
-/* HEADER FIXO E TRANSPARENTE */
+/* HEADER FIXO E PRETO SEM FUNDO BRANCO AO SCROLL */
 #header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10000;
-  background: #000; /* preto */
+  background: #000; /* fundo preto sempre */
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: none;
 }
 
 /* Remove o fundo branco e sombra ao rolar */
 #header.scrolled {
-  background: #000;  /* mantém preto */
-  box-shadow: none;  /* sem sombra */
+  background: #000; /* mantém preto */
+  box-shadow: none; /* sem sombra */
 }
 
 /* Logo e links com cor bege */
 .logo a {
   color: #f1efe7;
 }
-
-nav ul.nav-links li a {
-  color: #f1efe7;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-/* Cor ao passar o mouse: laranja vivo */
-nav ul.nav-links li a:hover {
-  color: #ff6600; /* laranja vivo */
-}
-
-/* Hamburger menu fica bege claro também */
-.hamburger span {
-  background: #f1efe7;
-}
-
 
 /* LOGO */
 .logo a img {
@@ -95,8 +77,14 @@ nav ul.nav-links li a {
   transition: color 0.3s ease;
 }
 
+/* Cor ao passar o mouse: laranja vivo */
 nav ul.nav-links li a:hover {
   color: #ff6600; /* laranja vivo */
+}
+
+/* Hamburger menu fica bege claro também */
+.hamburger span {
+  background: #f1efe7;
 }
 
 /* Hamburger (menu mobile) */
@@ -154,9 +142,10 @@ nav ul.nav-links li a:hover {
 
 /* Hero Section estilo Apple */
 .hero.parallax {
-  background-size: cover;
-  background-attachment: fixed; /* Parallax simples */
+  background-size: 100%; /* tamanho inicial */
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* parallax simples */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -164,10 +153,12 @@ nav ul.nav-links li a:hover {
   text-align: center;
   color: #f1efe7;
   position: relative;
-  padding-top: 60px; /* para compensar o header fixo */
-  border-bottom-left-radius: 0px;  /* arredonda canto inferior esquerdo */
-  border-bottom-right-radius: 0px; /* arredonda canto inferior direito */
-  overflow: hidden; /* para cortar a imagem de fundo nas bordas arredondadas */
+  padding-top: 60px; /* compensar header fixo */
+  overflow: hidden;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  transition: background-size 0.3s ease-out; /* transição suave */
 }
 .hero.parallax::before {
   content: '';
@@ -189,10 +180,13 @@ nav ul.nav-links li a:hover {
   font-weight: 300;
   line-height: 1.2;
 }
+
+/* Texto "com estratégia e impacto" laranja */
 .hero-content span {
   font-weight: 600;
-  color: #ff6a00; /* toque premium */
+  color: #ff6a00; /* laranja */
 }
+
 .hero-content p {
   margin: 20px 0;
   color: #f1efe7;
@@ -236,116 +230,137 @@ nav ul.nav-links li a:hover {
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Ícone grande azul premium */
 .card i {
-  display: block;
-  font-size: 50px;
-  color: #00d4ff;
+  font-size: 3rem;
   margin-bottom: 20px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.card:hover i {
-  transform: scale(1.1);
-  color: #008ecf;
+  color: #ff6a00;
 }
 
 .card h3 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #222;
+  color: #111;
+  font-weight: 600;
 }
 
 .card p {
-  color: #555;
   font-size: 1rem;
+  color: #555;
   line-height: 1.5;
 }
 
 /* Portfólio */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
   max-width: 1100px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
+
 .portfolio-item {
-  height: 200px;
-  background: #ddd;
-  border-radius: 20px;
+  background: #000;
+  color: #f1efe7;
+  padding: 50px 20px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 /* Contato */
-.contato form {
-  max-width: 500px;
+.contato p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+form {
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
-.contato input,
-.contato textarea {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
+
+form input,
+form textarea {
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  font-size: 1rem;
   resize: vertical;
 }
-.contato button {
-  padding: 15px;
-  background: #000;
-  color: #fff;
+
+form button {
+  padding: 15px 20px;
+  border-radius: 25px;
   border: none;
-  border-radius: 20px;
+  background: #ff6a00;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.contato button:hover {
-  background: #333;
+
+form button:hover,
+form button:focus,
+form button:active {
+  background: #e65c00;
+  outline: none;
 }
 
-/* Rodapé */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #777;
-  font-size: 14px;
-  background: #f9f9f9;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .section {
-    padding: 60px 20px;
-  }
-  .container {
-    height: 50px;
-  }
-}
-
+/* BOTÃO "FALE COMIGO" - tirar sublinhado azul */
 .btn-primary {
-  text-decoration: none; /* tira sublinhado */
-  color: #fff; /* texto branco */
-  background-color: #ff6a00; /* exemplo laranja vivo */
+  text-decoration: none !important; /* garante que não tenha sublinhado */
+  color: #fff;
+  background-color: #ff6a00;
   padding: 12px 30px;
   border-radius: 25px;
   display: inline-block;
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
-
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-  text-decoration: none; /* garantir que no hover/focus não aparece sublinhado */
-  background-color: #e65c00; /* laranja um pouco mais escuro no hover */
-  outline: none; /* remove contorno padrão no foco, se quiser */
+  text-decoration: none !important;
+  background-color: #e65c00;
+  outline: none;
 }
+
+/* RODAPÉ */
+footer {
+  padding: 30px 50px;
+  background: #000;
+  color: #f1efe7;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Links fora do header */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar customizada para melhor visual */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1efe7;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff6a00;
+  border-radius: 0px;
+}
+
+/* AOS (animação ao scroll) */
+/* Caso você queira usar o AOS.js, deixe o código para depois */
+/* Exemplo simples para ativar a classe .visible nas seções */
