@@ -1,0 +1,351 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte e corpo */
+body {
+  font-family: 'League Spartan', 'Inter', sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Container para centralizar conteúdo */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 0px; /* diminui o padding lateral pra colar mais na esquerda */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+/* HEADER FIXO E TRANSPARENTE */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  background: #000; /* preto */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+}
+
+/* Remove o fundo branco e sombra ao rolar */
+#header.scrolled {
+  background: #000;  /* mantém preto */
+  box-shadow: none;  /* sem sombra */
+}
+
+/* Logo e links com cor bege */
+.logo a {
+  color: #f1efe7;
+}
+
+nav ul.nav-links li a {
+  color: #f1efe7;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Cor ao passar o mouse: laranja vivo */
+nav ul.nav-links li a:hover {
+  color: #ff6600; /* laranja vivo */
+}
+
+/* Hamburger menu fica bege claro também */
+.hamburger span {
+  background: #f1efe7;
+}
+
+
+/* LOGO */
+.logo a img {
+  height: 80px; /* 2x maior */
+  display: block; /* remove espaços extras ao redor da imagem */
+  border-bottom-left-radius: 20px; /* arredondar canto inferior esquerdo */
+  border-bottom-right-radius: 20px; /* arredondar canto inferior direito */
+  object-fit: contain; /* para a imagem não distorcer */
+}
+
+/* NAV */
+nav ul.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul.nav-links li a {
+  text-decoration: none;
+  color: #f1efe7; /* bege */
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul.nav-links li a:hover {
+  color: #ff6600; /* laranja vivo */
+}
+
+/* Hamburger (menu mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #f1efe7; /* bege */
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* MENU RESPONSIVO */
+@media (max-width: 768px) {
+  nav ul.nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 200px;
+    height: calc(100% - 60px);
+    background: #111;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+  }
+
+  nav ul.nav-links.active {
+    right: 0;
+  }
+
+  nav ul.nav-links li a {
+    color: #f1efe7; /* bege */
+  }
+
+  nav ul.nav-links li a:hover {
+    color: #ff6600; /* laranja vivo */
+  }
+
+  .hamburger span {
+    background: #f1efe7; /* bege */
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hero Section estilo Apple */
+.hero.parallax {
+  background-size: cover;
+  background-attachment: fixed; /* Parallax simples */
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #f1efe7;
+  position: relative;
+  padding-top: 60px; /* para compensar o header fixo */
+  border-bottom-left-radius: 0px;  /* arredonda canto inferior esquerdo */
+  border-bottom-right-radius: 0px; /* arredonda canto inferior direito */
+  overflow: hidden; /* para cortar a imagem de fundo nas bordas arredondadas */
+}
+.hero.parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  z-index: 1;
+}
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.hero-content span {
+  font-weight: 600;
+  color: #ff6a00; /* toque premium */
+}
+.hero-content p {
+  margin: 20px 0;
+  color: #f1efe7;
+}
+
+/* Seções */
+.section {
+  padding: 100px 50px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Cards de serviços */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícone grande azul premium */
+.card i {
+  display: block;
+  font-size: 50px;
+  color: #00d4ff;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card:hover i {
+  transform: scale(1.1);
+  color: #008ecf;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Portfólio */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.portfolio-item {
+  height: 200px;
+  background: #ddd;
+  border-radius: 20px;
+}
+
+/* Contato */
+.contato form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contato input,
+.contato textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  resize: vertical;
+}
+.contato button {
+  padding: 15px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contato button:hover {
+  background: #333;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .section {
+    padding: 60px 20px;
+  }
+  .container {
+    height: 50px;
+  }
+}
+
+.btn-primary {
+  text-decoration: none; /* tira sublinhado */
+  color: #fff; /* texto branco */
+  background-color: #ff6a00; /* exemplo laranja vivo */
+  padding: 12px 30px;
+  border-radius: 25px;
+  display: inline-block;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  text-decoration: none; /* garantir que no hover/focus não aparece sublinhado */
+  background-color: #e65c00; /* laranja um pouco mais escuro no hover */
+  outline: none; /* remove contorno padrão no foco, se quiser */
+}
