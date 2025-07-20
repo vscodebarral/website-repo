@@ -16,19 +16,26 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
   <!-- NAVBAR -->
   <header id="header">
     <div class="container">
       <div class="logo">
-        <a href="#"><img src="Images/TM_logo.png" alt="Logo TM" /></a>
+        <a href="#">
+          <img
+            src="https://i.ibb.co/DgGJq2Wk/TM-logo.png"
+            alt="Logo TM"
+          />
+        </a>
       </div>
       <nav>
         <ul class="nav-links">
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#portfolio">Portfólio</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="#contato">Contacto</a></li>
         </ul>
         <div class="hamburger">
           <span></span>
@@ -44,7 +51,7 @@
     class="hero parallax"
     style="background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1920&q=80');"
   >
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-down" data-aos-duration="1000">
       <h1>
         Gestão de Redes Sociais<br /><span>com estratégia e impacto</span>
       </h1>
@@ -57,10 +64,10 @@
   </section>
 
   <!-- SERVIÇOS -->
-  <section id="servicos" class="section">
-    <h2 data-aos="fade-up">Serviços</h2>
+  <section id="servicos" class="section" data-aos="fade-up" data-aos-duration="800">
+    <h2>Serviços</h2>
     <div class="cards">
-      <div class="card" data-aos="zoom-in">
+      <div class="card" data-aos="zoom-in" data-aos-delay="0">
         <i class="fa-solid fa-chart-line"></i>
         <h3>Gestão Completa</h3>
         <p>
@@ -69,7 +76,7 @@
         </p>
       </div>
 
-      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+      <div class="card" data-aos="zoom-in" data-aos-delay="150">
         <i class="fa-solid fa-camera-retro"></i>
         <h3>Criação de Conteúdo</h3>
         <p>
@@ -78,7 +85,7 @@
         </p>
       </div>
 
-      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
         <i class="fa-solid fa-lightbulb"></i>
         <h3>Consultoria</h3>
         <p>
@@ -90,17 +97,17 @@
   </section>
 
   <!-- PORTFÓLIO -->
-  <section id="portfolio" class="section">
+  <section id="portfolio" class="section" data-aos="fade-up" data-aos-duration="800">
     <h2>Portfólio</h2>
     <div class="portfolio-grid">
-      <div class="portfolio-item">Projeto 1</div>
-      <div class="portfolio-item">Projeto 2</div>
-      <div class="portfolio-item">Projeto 3</div>
+      <div class="portfolio-item" data-aos="flip-left" data-aos-delay="0">Projeto 1</div>
+      <div class="portfolio-item" data-aos="flip-left" data-aos-delay="150">Projeto 2</div>
+      <div class="portfolio-item" data-aos="flip-left" data-aos-delay="300">Projeto 3</div>
     </div>
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" class="section contato">
+  <section id="contato" class="section contato" data-aos="fade-up" data-aos-duration="800">
     <h2>Entre em Contato</h2>
     <p>Quer impulsionar suas redes sociais? Envie uma mensagem!</p>
     <form>
@@ -116,6 +123,14 @@
     <p>© 2025 TM - Todos os direitos reservados</p>
   </footer>
 
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,  // duração padrão das animações
+      once: true,     // animação uma vez só ao aparecer
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
